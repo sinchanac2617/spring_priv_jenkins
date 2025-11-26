@@ -1,302 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="JspGram - Your Social Media Feed">
-    <title>JspGram - Home</title>
+<meta charset="UTF-8">
+<title>LuxDrive Motors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+<style>
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    <style>
-        :root {
-            --primary-color: #0095f6;
-            --secondary-color: #00376b;
-            --background-color: #fafafa;
-            --border-color: #dbdbdb;
-        }
+/* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+/* BODY */
+body {
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-        body {
-            background-color: var(--background-color);
-        }
+/* HEADER */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-        .navbar {
-            background-color: white;
-            border-bottom: 1px solid var(--border-color);
-            padding: 0.75rem 2rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+header h1 {
+  font-size: 28px;
+  color: #ff3c3c;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
 
-        .nav-content {
-            max-width: 975px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+nav a {
+  color: #ccc;
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
 
-        .logo img {
-            width: 103px;
-            height: auto;
-        }
+nav a:hover {
+  color: #ff3c3c;
+}
 
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-        }
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 70px;
+  background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
 
-        .profile-button,
-        .logout-button {
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            font-size: 0.875rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
 
-        .profile-button {
-            background: none;
-            border: none;
-            color: var(--secondary-color);
-        }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
 
-        .profile-button:hover {
-            color: var(--primary-color);
-        }
+.hero-content h2 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+}
 
-        .logout-button {
-            background-color: var(--primary-color);
-            border: none;
-            color: white;
-        }
+.hero-content p {
+  margin: 20px 0;
+  font-size: 15px;
+  color: #dddddd;
+}
 
-        .logout-button:hover {
-            background-color: #0081d6;
-        }
+.hero-content button {
+  padding: 12px 30px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: .3s;
+}
 
-        .main-content {
-            max-width: 600px;
-            margin: 100px auto 0;
-            padding: 2rem;
-        }
+.btn-red {
+  background: #ff3c3c;
+  color: #fff;
+}
 
-        .message {
-            text-align: center;
-            margin: 80px auto 0;
-            max-width: 600px;
-        }
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ff3c3c;
+  color: #ff3c3c;
+}
 
-        .success-message {
-            color: #28a745;
-            margin-bottom: 1rem;
-        }
+.btn-red:hover {
+  background: #cc2e2e;
+}
 
-        .error-message {
-            color: #dc3545;
-            margin-bottom: 1rem;
-        }
+.btn-outline:hover {
+  background: #ff3c3c;
+  color: #fff;
+}
 
-        .post {
-            background-color: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            padding: 1rem;
-        }
+/* SECTION TITLE */
+.section-title {
+  font-size: 32px;
+  padding: 50px 60px 20px;
+  color: #ff3c3c;
+  font-weight: 600;
+}
 
-        .post-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 0.5rem;
-        }
+/* CARS GRID */
+.cars-grid {
+  padding: 0 60px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
 
-        .profile-picture {
-            border-radius: 50%;
-            margin-right: 1rem;
-            object-fit: cover;
-        }
+.car-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transform: translateY(0);
+  transition: .4s;
+}
 
-        .post-username {
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
+.car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(255, 60, 60, 0.25);
+}
 
-        .post-image {
-            width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 1rem;
-        }
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
 
-        .post-caption {
-            margin-bottom: 0.5rem;
-            color: #262626;
-        }
+.car-info {
+  padding: 15px 20px;
+}
 
-        .post-time {
-            color: #8e8e8e;
-            font-size: 0.875rem;
-            margin-bottom: 0.5rem;
-        }
+.car-info h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-        .post-actions {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
+.car-info p {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
 
-        .action-button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
+.car-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #ffbf6a;
+}
 
-        .like-button {
-            background-color: var(--primary-color);
-            color: white;
-        }
+/* CALL TO ACTION */
+.cta {
+  margin: 70px 60px;
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff3c3c, #ff7a00);
+  box-shadow: 0 20px 40px rgba(255, 60, 60, 0.3);
+}
 
-        .like-button:hover {
-            background-color: #0081d6;
-        }
+.cta h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
 
-        .comment-button {
-            background-color: #f0f0f0;
-            color: var(--secondary-color);
-        }
+.cta p {
+  color: #fff;
+  margin-bottom: 20px;
+}
 
-        .comment-button:hover {
-            background-color: #e0e0e0;
-        }
+.cta button {
+  padding: 12px 30px;
+  background: #fff;
+  border: none;
+  color: #ff3c3c;
+  font-weight: 700;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: .3s;
+}
 
-        .all-caught-up {
-            padding: 3rem 0;
-            text-align: center;
-        }
+.cta button:hover {
+  background: #ffe2e2;
+}
 
-        .checkmark-circle {
-            width: 100px;
-            height: 100px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .checkmark-circle svg {
-            width: 50px;
-            height: 50px;
-            color: white;
-        }
-
-        .caught-up-text {
-            font-size: 1.5rem;
-            color: #262626;
-            margin-bottom: 0.5rem;
-        }
-
-        .caught-up-subtext {
-            color: #8e8e8e;
-            font-size: 0.875rem;
-        }
-
-        @media (max-width: 768px) {
-            .navbar {
-                padding: 0.75rem 1rem;
-            }
-
-            .nav-content {
-                padding: 0 1rem;
-            }
-
-            .main-content {
-                padding: 1rem;
-            }
-
-            .post {
-                border-radius: 0;
-                margin-bottom: 1rem;
-            }
-        }
-    </style>
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #999;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">
-                <a href="/home"><img src="/images/jspgram-logo.png" alt="JspGram Logo"></a>
-            </div>
-            <div class="nav-right">
-                <a href="/profile"><button class="profile-button">Profile</button></a>
-                <a href="/logout"><button class="logout-button">Logout</button></a>
-            </div>
-        </div>
-    </nav>
-    <div class="message">
-        <h3 class="success-message" th:text="${session.pass}"></h3>
-        <h3 class="error-message" th:text="${session.fail}"></h3>
-        <th:block th:text="${@messageRemover.remove()}"></th:block>
+
+<!-- HEADER -->
+<header>
+  <h1>LUXDRIVE</h1>
+  <nav>
+    <a href="#sports">Sports</a>
+    <a href="#suv">SUV</a>
+    <a href="#ev">Electric</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h2>Experience Pure Power & Luxury.</h2>
+    <p>Enter a world where speed meets elegance. Discover the finest sports, luxury, and electric cars crafted for performance enthusiasts.</p>
+    <button class="btn-red">Explore Cars</button>
+    <button class="btn-outline">Book a Test Drive</button>
+  </div>
+</section>
+
+<!-- SPORTS CARS -->
+<h2 class="section-title" id="sports">🔥 Sports Cars</h2>
+<section class="cars-grid">
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg" alt="">
+    <div class="car-info">
+      <h3>Blaze GT</h3>
+      <p>Aerodynamic beast engineered for extreme performance.</p>
+      <div class="car-meta">
+        <span>3.2s 0–100</span> <span>V8 Turbo</span>
+      </div>
     </div>
-    <main class="main-content">
-        <div th:if="${posts}">
-            <div th:each="post:${posts}" class="post">
-                <div class="post-header">
-                    <img th:if="${post.user.imageUrl!=null}" height="50" width="50" th:src="${post.user.imageUrl}" class="profile-picture">
-                    <img th:if="${post.user.imageUrl==null}" height="50" width="50" src="https://static.vecteezy.com/system/resources/previews/019/879/186/non_2x/user-icon-on-transparent-background-free-png.png" alt="Profile Picture" class="profile-picture">
-                    <span class="post-username" th:text="${post.user.username}"></span>
-                </div>
-                <img class="post-image" th:src="${post.imageUrl}">
-                <p class="post-caption" th:text="${post.caption}"></p>
-                <p class="post-time" th:text="${post.postedTime}"></p>
-                <p class="post-likes" th:text="${post.likedUsers.size()}+' Likes'"></p>
-                <div class="post-actions">
-                    <a th:if="${!post.hasLiked(session.user.id)}" th:href="'/like/'+${post.id}">
-                        <button class="action-button like-button">Like</button>
-                    </a>
-                    <a th:if="${post.hasLiked(session.user.id)}" th:href="'/dislike/'+${post.id}">
-                        <button class="action-button like-button">Dislike</button>
-                    </a>
-                    
-                    <span th:text="${post.comments.size()}"></span>
-                    <a th:href="'/comment/'+${post.id}"><button class="action-button comment-button">Comment</button></a>
-                    <div th:each="comment:${post.comments}">
-                        <span th:text="${comment.user.username}"></span>
-                        <span th:text="${comment.comment}"></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  </div>
 
-        <div class="all-caught-up">
-            <div class="checkmark-circle">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-            </div>
-            <h2 class="caught-up-text">You're All Caught Up</h2>
-            <p class="caught-up-subtext">You've seen all new posts</p>
-        </div>
-    </main>
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg" alt="">
+    <div class="car-info">
+      <h3>Crimson R</h3>
+      <p>Premium power combined with hand-crafted luxury interiors.</p>
+      <div class="car-meta">
+        <span>650HP</span> <span>AWD</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg" alt="">
+    <div class="car-info">
+      <h3>NightShadow</h3>
+      <p>Blacked-out grand tourer for long, powerful night drives.</p>
+      <div class="car-meta">
+        <span>320 km/h</span> <span>V6 Twin</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SUV CARS -->
+<h2 class="section-title" id="suv">🚙 Luxury SUVs</h2>
+<section class="cars-grid">
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg" alt="">
+    <div class="car-info">
+      <h3>TrailMaster X</h3>
+      <p>Unstoppable on any terrain with premium cabin comfort.</p>
+      <div class="car-meta">
+        <span>4x4</span> <span>230mm Ground</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/974207/pexels-photo-974207.jpeg" alt="">
+    <div class="car-info">
+      <h3>UrbanLux</h3>
+      <p>Family SUV with futuristic interior & enhanced safety tech.</p>
+      <div class="car-meta">
+        <span>7 Seats</span> <span>Sunroof</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EV CARS -->
+<h2 class="section-title" id="ev">⚡ Electric Cars</h2>
+<section class="cars-grid">
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg" alt="">
+    <div class="car-info">
+      <h3>Volt E1</h3>
+      <p>Next-gen electric drive with lightning-fast charging.</p>
+      <div class="car-meta">
+        <span>420 km</span> <span>Fast Charge</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg" alt="">
+    <div class="car-info">
+      <h3>NeoCharge S</h3>
+      <p>The perfect blend of luxury, silence, and explosive torque.</p>
+      <div class="car-meta">
+        <span>3.8s 0–100</span> <span>Dual Motor</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta" id="contact">
+  <h2>Book Your Test Drive Today</h2>
+  <p>Be the first to experience unmatched luxury and performance.</p>
+  <button>Contact Us</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 LuxDrive Motors — Designed for luxury car lovers.
+</footer>
+
 </body>
-
 </html>
