@@ -1,236 +1,365 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Login to JSPGRAM - Share your moments">
-    <title>JSPGRAM - Login</title>
+<meta charset="UTF-8">
+<title>LuxDrive Motors</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+<style>
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-    <style>
-        :root {
-            --primary-color: #5851DB;
-            --secondary-color: #405DE6;
-            --background-color: #FAFAFA;
-            --error-color: #ed4956;
-            --success-color: #2ecc71;
-            --gradient: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
-        }
+/* Reset */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+/* BODY */
+body {
+  background: #0a0a0a;
+  color: #fff;
+  overflow-x: hidden;
+}
 
-        body {
-            background-color: var(--background-color);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            animation: gradientBg 15s ease infinite;
-            background-size: 400% 400%;
-        }
+/* HEADER */
+header {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(12px);
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
 
-        @keyframes gradientBg {
-            0% { background-position: 0% 50% }
-            50% { background-position: 100% 50% }
-            100% { background-position: 0% 50% }
-        }
+header h1 {
+  font-size: 28px;
+  color: #ff3c3c;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
 
-        .logo {
-            margin-bottom: 2rem;
-            transform: scale(1);
-            transition: transform 0.3s ease;
-        }
+nav a {
+  color: #ccc;
+  margin-left: 25px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: .3s;
+}
 
-        .logo:hover {
-            transform: scale(1.05);
-        }
+nav a:hover {
+  color: #ff3c3c;
+}
 
-        .logo img {
-            width: 200px;
-            height: auto;
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
-        }
+/* HERO SECTION */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-left: 70px;
+  background-image: url('https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+}
 
-        .login-container {
-            background-color: white;
-            padding: 2.5rem;
-            border-radius: 10px;
-            border: 1px solid rgba(219, 219, 219, 0.3);
-            width: 100%;
-            max-width: 400px;
-            margin-bottom: 1rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.6);
+}
 
-        .login-container:hover {
-            transform: translateY(-2px);
-        }
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+}
 
-        .message {
-            margin-bottom: 1.5rem;
-            text-align: center;
-        }
+.hero-content h2 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.2;
+}
 
-        .success-message {
-            color: var(--success-color);
-            animation: fadeIn 0.5s ease;
-        }
+.hero-content p {
+  margin: 20px 0;
+  font-size: 15px;
+  color: #dddddd;
+}
 
-        .error-message {
-            color: var(--error-color);
-            animation: fadeIn 0.5s ease;
-        }
+.hero-content button {
+  padding: 12px 30px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  transition: .3s;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.btn-red {
+  background: #ff3c3c;
+  color: #fff;
+}
 
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
+.btn-outline {
+  background: transparent;
+  border: 2px solid #ff3c3c;
+  color: #ff3c3c;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 0.9rem;
-            background-color: var(--background-color);
-            border: 2px solid #dbdbdb;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
+.btn-red:hover {
+  background: #cc2e2e;
+}
 
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--secondary-color);
-            box-shadow: 0 0 0 2px rgba(64, 93, 230, 0.2);
-        }
+.btn-outline:hover {
+  background: #ff3c3c;
+  color: #fff;
+}
 
-        .login-button {
-            width: 100%;
-            padding: 0.8rem;
-            background: var(--gradient);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            background-size: 200% auto;
-        }
+/* SECTION TITLE */
+.section-title {
+  font-size: 32px;
+  padding: 50px 60px 20px;
+  color: #ff3c3c;
+  font-weight: 600;
+}
 
-        .login-button:hover {
-            background-position: right center;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
+/* CARS GRID */
+.cars-grid {
+  padding: 0 60px 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+}
 
-        .register-container {
-            background-color: white;
-            padding: 1.8rem;
-            border-radius: 10px;
-            border: 1px solid rgba(219, 219, 219, 0.3);
-            width: 100%;
-            max-width: 400px;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        }
+.car-card {
+  background: rgba(255, 255, 255, 0.05);
+  padding-bottom: 20px;
+  border-radius: 20px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transform: translateY(0);
+  transition: .4s;
+}
 
-        .register-link {
-            color: var(--secondary-color);
-            font-size: 0.95rem;
-        }
+.car-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 18px 45px rgba(255, 60, 60, 0.25);
+}
 
-        .register-link a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
+.car-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
 
-        .register-link a:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
+.car-info {
+  padding: 15px 20px;
+}
 
-        .footer {
-            margin-top: 2rem;
-            color: #8e8e8e;
-            font-size: 0.85rem;
-            text-align: center;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-        }
+.car-info h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-        @media (max-width: 450px) {
-            .login-container,
-            .register-container {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
+.car-info p {
+  font-size: 14px;
+  color: #bbbbbb;
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
 
-            body {
-                padding: 1rem;
-            }
+.car-meta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #ffbf6a;
+}
 
-            .logo img {
-                width: 150px;
-            }
-        }
+/* CALL TO ACTION */
+.cta {
+  margin: 70px 60px;
+  padding: 50px;
+  text-align: center;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #ff3c3c, #ff7a00);
+  box-shadow: 0 20px 40px rgba(255, 60, 60, 0.3);
+}
 
-        @media (max-width: 350px) {
-            .login-container,
-            .register-container {
-                padding: 1rem;
-            }
+.cta h2 {
+  font-size: 34px;
+  margin-bottom: 12px;
+}
 
-            .form-group input {
-                padding: 0.7rem;
-            }
-        }
-    </style>
+.cta p {
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.cta button {
+  padding: 12px 30px;
+  background: #fff;
+  border: none;
+  color: #ff3c3c;
+  font-weight: 700;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.cta button:hover {
+  background: #ffe2e2;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 25px;
+  color: #999;
+  font-size: 13px;
+}
+</style>
 </head>
 
 <body>
-    <div class="logo">
-        <img src="/images/jspgram-logo.png" alt="JSPGRAM Logo">
-    </div>
 
-    <div class="message">
-        <h3 class="success-message" th:text="${session.pass}"></h3>
-        <h3 class="error-message" th:text="${session.fail}"></h3>
-        <th:block th:text="${@messageRemover.remove()}"></th:block>
-    </div>
+<!-- HEADER -->
+<header>
+  <h1>LUXDRIVE</h1>
+  <nav>
+    <a href="#sports">Sports</a>
+    <a href="#suv">SUV</a>
+    <a href="#ev">Electric</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
 
-    <div class="login-container">
-        <form action="/login" method="POST">
-            <div class="form-group">
-                <input type="text" id="username" name="username" placeholder="Username" required autocomplete="username">
-            </div>
-            <div class="form-group">
-                <input type="password" id="password" name="password" placeholder="Password" required autocomplete="current-password">
-            </div>
-            <button type="submit" class="login-button">Log In</button>
-        </form>
-    </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h2>Experience Pure Power & Luxury.</h2>
+    <p>Enter a world where speed meets elegance. Discover the finest sports, luxury, and electric cars crafted for performance enthusiasts.</p>
+    <button class="btn-red">Explore Cars</button>
+    <button class="btn-outline">Book a Test Drive</button>
+  </div>
+</section>
 
-    <div class="register-container">
-        <p class="register-link">Don't have an account? <a href="/register">Sign up</a></p>
-    </div>
+<!-- SPORTS CARS -->
+<h2 class="section-title" id="sports">🔥 Sports Cars</h2>
+<section class="cars-grid">
 
-    <footer class="footer">
-        <p>© 2025 JSPGRAM</p>
-    </footer>
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/210019/pexels-photo-210019.jpeg" alt="">
+    <div class="car-info">
+      <h3>Blaze GT</h3>
+      <p>Aerodynamic beast engineered for extreme performance.</p>
+      <div class="car-meta">
+        <span>3.2s 0–100</span> <span>V8 Turbo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg" alt="">
+    <div class="car-info">
+      <h3>Crimson R</h3>
+      <p>Premium power combined with hand-crafted luxury interiors.</p>
+      <div class="car-meta">
+        <span>650HP</span> <span>AWD</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/120049/pexels-photo-120049.jpeg" alt="">
+    <div class="car-info">
+      <h3>NightShadow</h3>
+      <p>Blacked-out grand tourer for long, powerful night drives.</p>
+      <div class="car-meta">
+        <span>320 km/h</span> <span>V6 Twin</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- SUV CARS -->
+<h2 class="section-title" id="suv">🚙 Luxury SUVs</h2>
+<section class="cars-grid">
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/799443/pexels-photo-799443.jpeg" alt="">
+    <div class="car-info">
+      <h3>TrailMaster X</h3>
+      <p>Unstoppable on any terrain with premium cabin comfort.</p>
+      <div class="car-meta">
+        <span>4x4</span> <span>230mm Ground</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/974207/pexels-photo-974207.jpeg" alt="">
+    <div class="car-info">
+      <h3>UrbanLux</h3>
+      <p>Family SUV with futuristic interior & enhanced safety tech.</p>
+      <div class="car-meta">
+        <span>7 Seats</span> <span>Sunroof</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EV CARS -->
+<h2 class="section-title" id="ev">⚡ Electric Cars</h2>
+<section class="cars-grid">
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg" alt="">
+    <div class="car-info">
+      <h3>Volt E1</h3>
+      <p>Next-gen electric drive with lightning-fast charging.</p>
+      <div class="car-meta">
+        <span>420 km</span> <span>Fast Charge</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="car-card">
+    <img src="https://images.pexels.com/photos/112460/pexels-photo-112460.jpeg" alt="">
+    <div class="car-info">
+      <h3>NeoCharge S</h3>
+      <p>The perfect blend of luxury, silence, and explosive torque.</p>
+      <div class="car-meta">
+        <span>3.8s 0–100</span> <span>Dual Motor</span>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CALL TO ACTION -->
+<section class="cta" id="contact">
+  <h2>Book Your Test Drive Today</h2>
+  <p>Be the first to experience unmatched luxury and performance.</p>
+  <button>Contact Us</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  © 2025 LuxDrive Motors — Designed for luxury car lovers.
+</footer>
+
 </body>
-
 </html>
